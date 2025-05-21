@@ -1,0 +1,42 @@
+{% extends 'shared/layout.html' %} {% block extracss %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='main/css/login.css') }}"
+    type="text/css"
+/>
+{% endblock %} {% block extrajs %}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+<script
+    src="{{ url_for('static', filename='main/js/login.js')}}"
+    defer
+></script>
+{% endblock %} {% block maincontent %}
+<!-- Login page -->
+<div class="login__div">
+    <h1 class="login__h1--title">Login</h1>
+    <input
+        type="email"
+        class="login__input"
+        id="email"
+        placeholder="Email"
+        required
+    />
+    <input
+        type="password"
+        class="login__input"
+        id="password"
+        placeholder="Password"
+        required
+    />
+    <button class="login__btn--submit" id="submit" type="button">Login</button>
+    <div class="login__div--create">
+        <p>New user?</p>
+        <a class="login__a--create" href="/register">Create Account</a>
+    </div>
+</div>
+{% endblock %}

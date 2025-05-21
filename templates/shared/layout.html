@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Whendigo</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='main/css/layout.css') }}"
+        />
+        <link
+            rel="shortcut icon"
+            href="{{ url_for('static', filename='main/images/favicon.ico') }}"
+        />
+        {% block extracss %}{% endblock %} {% block extrajs %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="main-content">
+            <!-- The navigation bar -->
+            <nav class="navbar">
+                <div class="navbar__div--logo">
+                    <img
+                        class="navbar__image--logo image"
+                        src="../static/main/images/Whendigo_full.png"
+                        alt="Whendigo"
+                        loading="lazy"
+                    />
+                    <h1 class="navbar__h1--title">Whendigo</h1>
+                </div>
+                <ul class="navbar__links">
+                    <li>
+                        <a class="navbar__link" href="\" title="Home">Home</a>
+                    </li>
+                    {% if session.get('email') %}
+                    <li>
+                        <a class="navbar__link" href="/logout">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="navbar__link" href="/login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <!-- The main content  -->
+            <main class="main">{% block maincontent %}{% endblock %}</main>
+
+            <!-- The footer of the file -->
+            <footer class="footer">&copy;2025 Owen Irving</footer>
+        </div>
+    </body>
+</html>

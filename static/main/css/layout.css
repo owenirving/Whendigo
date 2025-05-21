@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f7ff;
+    color: #333;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+}
+
+/* Navbar Styling */
+.navbar {
+    height: 10vh;
+    width: 100vw;
+    background-image: linear-gradient(to right, #0Fa3b1, #b5e2fa);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.navbar__image--logo {
+    width: 4rem;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.navbar__div--logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar__h1--title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar__links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar__link {
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 0.3rem;
+}
+
+.navbar__link:hover {
+    background-color: #ffffff;
+    color: #0Fa3b1;
+}
+
+.navbar__link:visited:hover {
+    background-color: #ffffff;
+    color: #0Fa3b1;
+}
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1.5rem;
+    color: #000000;
+    width: 100vw;
+}

@@ -1,0 +1,31 @@
+{% extends 'shared/layout.html' %} {% block extracss %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='main/css/events.css') }}"
+    type="text/css"
+/>
+{% endblock %} {% block maincontent %}
+<!-- Events page -->
+<div class="events__div">
+    <h1 class="events__h1">Your Events</h1>
+    {% if events %}
+    <ul class="events__list">
+        {% for event in events %}
+        <li class="events__event">
+            <a class="events__a" href="/event/{{ event['event_id'] }}"
+                >{{ event['name'] }}</a
+            >
+            <p class="events__p--creator">
+                Creator: {{ event['creator_email'] }}
+            </p>
+            <p class="events__p--dates">
+                {{ event['start_date'] }} - {{ event['end_date'] }}
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="events__p--none">You have no events.</p>
+    {% endif %}
+</div>
+{% endblock %}

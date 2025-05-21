@@ -1,0 +1,57 @@
+{% extends 'shared/layout.html' %} {% block extracss %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='main/css/event.css') }}"
+    type="text/css"
+/>
+{% endblock %} {% block extrajs %}
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script>
+    const event_id = "{{ event['event_id'] }}";
+</script>
+<script>
+    const event_info = {{ event | tojson }};
+</script>
+<script
+    src="{{ url_for('static', filename='main/js/event.js')}}"
+    defer
+></script>
+{% endblock %} {% block maincontent %}
+<div class="event__div">
+    <!-- Event info -->
+    <div class="event__div--info">
+        <h1 class="event__h1">{{ event['name'] }}</h1>
+        <p class="event__p--info">
+            <strong>Date:</strong> {{ event['start_date'] }} to {{
+            event['end_date'] }}
+        </p>
+        <p class="event__p--info">
+            <strong>Time:</strong> {{ event['start_time'] }} - {{
+            event['end_time'] }} (EST)
+        </p>
+        <p class="event__p--info">
+            <strong>Best Time to Meet:</strong><p class="event__p--info" id="best_time">No availability submitted yet</p>
+        </p>
+    </div>
+    <!-- Mode selection -->
+    <div class="event__div--selection">
+        <p class="event__p--select">Availability Mode:</p>
+        <select class="event__select" id="mode">
+            <option value="Available">Available</option>
+            <option value="Maybe">Maybe</option>
+            <option value="Unavailable">Unavailable</option>
+        </select>
+    </div>
+    <div class="event__div--grid">
+        <table class="event__table" id="availability-grid">
+            <!-- Actual availability table-->
+        </table>
+    </div>
+</div>
+{% endblock %}

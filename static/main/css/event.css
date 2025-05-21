@@ -1,0 +1,158 @@
+/* Event page styles */
+.event__div {
+    width: 60vw;
+    min-height: 70vh;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-image: linear-gradient(to bottom right, #0fa3b1, #b5e2fa);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Info Section */
+.event__div--info {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.event__h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.event__p--info {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #f5f5f5;
+}
+
+/* Availability Mode Selection */
+.event__div--selection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.event__p--select {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 0;
+}
+
+.event__select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    background-color: #ffffff;
+    color: #272727;
+    cursor: pointer;
+}
+
+.event__select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.event__select:hover {
+    background-color: #f0f0f0;
+}
+
+/* Availability Grid */
+.event__div--grid {
+    width: 100%;
+    max-width: calc(100vw - 4rem);
+    overflow-x: auto;
+    position: relative;
+    margin: 1rem auto;
+    user-select: none;
+}
+
+.event__table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 auto;
+    background-color: #ffffff;
+    width: fit-content;
+    min-width: max-content;
+}
+
+/* Time column styles */
+.event__table td:first-child,
+.event__table th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    min-width: 100px;
+    background-color: #0fa3b1;
+    color: #ffffff;
+    margin-left: 0;
+}
+
+/* Cell styles */
+.event__table th,
+.event__table td {
+    min-width: 120px;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid #d3e9ff;
+}
+
+.event__table th {
+    white-space: nowrap;
+    background-color: #0fa3b1;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.event__table td {
+    background-color: #f9f9f9;
+    color: #272727;
+}
+
+.event__table td:hover {
+    cursor: pointer;
+}
+
+/* Availability mode colors */
+.event__table td.available-3 {
+    background-color: #0d4d10;
+}
+
+.event__table td.available-2 {
+    background-color: #599119;
+}
+
+.event__table td.available-1 {
+    background-color: #9ffa4a;
+}
+
+.event__table td.maybe {
+    background-color: #ffeb3b;
+}
+
+.event__table td.unavailable {
+    background-color: #9c9c9c;
+}
+
+.event__table td.unset {
+    background-color: #ffffff;
+}
+
+.selected-mode {
+    border: 2px solid #000 !important;
+    z-index: 3;
+    position: relative;
+}
