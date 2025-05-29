@@ -1,0 +1,8 @@
+flask
+gunicorn
+cryptography
+flask-socketio
+eventlet==0.30.2
+Flask-Failsafe
+mysql-connector-python
+python-dotenv
