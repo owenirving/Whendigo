@@ -92,7 +92,7 @@ class database:
         return table_info
 
     def createTables(self, purge=False, data_path = 'flask_app/database/'):
-        ''' CODE THAT CREATES YOUR DATABASE TABLES.'''
+        '''Creates database tables'''
 
         # Should be in order or creation
         if purge:
