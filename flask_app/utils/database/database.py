@@ -11,6 +11,9 @@ from cryptography.fernet import Fernet
 from math import pow
 from flask import session
 from datetime import timedelta, datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class database:
 
@@ -23,12 +26,12 @@ class database:
         self.port           = 3306
         self.password       = 'master'
         self.tables         = ['users', 'events', 'invitees', 'availability']
-        self.encryption     =  {   'oneway': {'salt' : b'averysaltysailortookalongwalkoffashortbridge',
+        self.encryption     =  {   'oneway': {'salt' : os.getenv('DB_SALT').encode('UTF-8'),
                                                  'n' : int(pow(2,5)),
                                                  'r' : 9,
                                                  'p' : 1
                                              },
-                                'reversible': { 'key' : '7pK_fnSKIjZKuv_Gwc--sZEMKn2zc8VvD6zS96XcNHE='}
+                                'reversible': { 'key' : os.getenv('ENCRYPTION_KEY')}
                                 }
 
     def query(self, query = "SELECT * FROM users", parameters = None):
@@ -61,35 +64,6 @@ class database:
         cur.close()
         cnx.close()
         return row
-        query = """select concat(col.table_schema, '.', col.table_name) as 'table',
-                          col.column_name                               as column_name,
-                          col.column_key                                as is_key,
-                          col.column_comment                            as column_comment,
-                          kcu.referenced_column_name                    as fk_column_name,
-                          kcu.referenced_table_name                     as fk_table_name
-                    from information_schema.columns col
-                    join information_schema.tables tab on col.table_schema = tab.table_schema and col.table_name = tab.table_name
-                    left join information_schema.key_column_usage kcu on col.table_schema = kcu.table_schema
-                                                                     and col.table_name = kcu.table_name
-                                                                     and col.column_name = kcu.column_name
-                                                                     and kcu.referenced_table_schema is not null
-                    where col.table_schema not in('information_schema','sys', 'mysql', 'performance_schema')
-                                              and tab.table_type = 'BASE TABLE'
-                    order by col.table_schema, col.table_name, col.ordinal_position;"""
-        results = self.query(query)
-        if nested == False:
-            return results
-
-        table_info = {}
-        for row in results:
-            table_info[row['table']] = {} if table_info.get(row['table']) is None else table_info[row['table']]
-            table_info[row['table']][row['column_name']] = {} if table_info.get(row['table']).get(row['column_name']) is None else table_info[row['table']][row['column_name']]
-            table_info[row['table']][row['column_name']]['column_comment']     = row['column_comment']
-            table_info[row['table']][row['column_name']]['fk_column_name']     = row['fk_column_name']
-            table_info[row['table']][row['column_name']]['fk_table_name']      = row['fk_table_name']
-            table_info[row['table']][row['column_name']]['is_key']             = row['is_key']
-            table_info[row['table']][row['column_name']]['table']              = row['table']
-        return table_info
 
     def createTables(self, purge=False, data_path = 'flask_app/database/'):
         '''Creates database tables'''
