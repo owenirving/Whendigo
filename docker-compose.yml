@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+    # A user-defined name for this container
+    flask-app:
+        container_name: flask-app
+        # Indicates that `Dockerfile-dev` should be used for local instantiations
+        build:
+            context: .
+            dockerfile: Dockerfile-dev
+        stdin_open: true
+        tty: true
+        ports:
+            - "8080:8080"
+        # Mounts the local directory to docker container as a volume.
+        volumes:
+            - .:/app
