@@ -1,6 +1,6 @@
 # 📅 Whendigo
 
-A real-time, group scheduling web app inspired by <a href="https://when2meet.com">When2Meet</a>, built to make group coordination fast, easy, and intuitive.
+A real-time, group scheduling web app inspired by <a href="https://when2meet.com" target="_blank">When2Meet</a>, built to make group coordination fast, easy, and intuitive.
 
 ---
 
