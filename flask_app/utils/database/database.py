@@ -19,31 +19,38 @@ class database:
 
     def __init__(self, purge = False):
 
-        # Grab information from the configuration file
-        self.database       = 'db'
-        self.host           = '127.0.0.1'
-        self.user           = 'master'
-        self.port           = 3306
-        self.password       = 'master'
+        # Grab information from environment variables
+        self.database       = os.getenv('DB_NAME', 'db')
+        self.host           = os.getenv('DB_HOST', '127.0.0.1')
+        self.user           = os.getenv('DB_USER', 'master')
+        self.port           = int(os.getenv('DB_PORT', 3306))
+        self.password       = os.getenv('DB_PASSWORD', 'master')
+        self.ssl_ca         = os.getenv('DB_SSL_CA', None) # Path to CA cert if needed
         self.tables         = ['users', 'events', 'invitees', 'availability']
-        self.encryption     =  {   'oneway': {'salt' : os.getenv('DB_SALT').encode('UTF-8'),
+        self.encryption     =  {   'oneway': {'salt' : os.getenv('DB_SALT', 'default_salt').encode('UTF-8'),
                                                  'n' : int(pow(2,5)),
                                                  'r' : 9,
                                                  'p' : 1
                                              },
-                                'reversible': { 'key' : os.getenv('ENCRYPTION_KEY')}
+                                'reversible': { 'key' : os.getenv('ENCRYPTION_KEY', 'default_key')}
                                 }
 
     def query(self, query = "SELECT * FROM users", parameters = None):
         ''' Executes a query on the database and returns the results. '''
 
-        cnx = mysql.connector.connect(host     = self.host,
-                                      user     = self.user,
-                                      password = self.password,
-                                      port     = self.port,
-                                      database = self.database,
-                                      charset  = 'latin1'
-                                     )
+        config = {
+            'host': self.host,
+            'user': self.user,
+            'password': self.password,
+            'port': self.port,
+            'database': self.database,
+            'charset': 'latin1'
+        }
+
+        if self.ssl_ca:
+            config['ssl_ca'] = self.ssl_ca
+
+        cnx = mysql.connector.connect(**config)
 
 
         if parameters is not None:
