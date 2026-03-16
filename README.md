@@ -4,9 +4,9 @@ A real-time, group scheduling web app inspired by <a href="https://when2meet.com
 
 ---
 
-<div style="text-align: center;">
+<p align="center">
     <img src="assets/Whendigo-Homepage.png" alt="Homepage" width="70%">
-</div>
+</p>
 
 ## About
 
