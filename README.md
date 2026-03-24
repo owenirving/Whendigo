@@ -68,9 +68,7 @@ Before you begin, ensure Docker and Docker Compose are installed on your system.
 
 ## Future Improvements
 
-We have exciting plans for the future of Whendigo:
-
-- [ ] **Email Notifications & Invite Links**: Automated emails for event invitations and updates.
-- [ ] **Admin Dashboard**: Analytics and management interface for event creators.
-- [ ] **Time Zone Support**: Automatic conversion and synchronization across different participant time zones.
-- [ ] **Enhanced Event Details**: Support for rich descriptions, meeting links, and detailed invitee lists.
+-  **Email Notifications & Invite Links**: Automated emails for event invitations and updates.
+-  **Admin Dashboard**: Analytics and management interface for event creators.
+-  **Time Zone Support**: Automatic conversion and synchronization across different participant time zones.
+-  **Enhanced Event Details**: Support for rich descriptions, meeting links, and detailed invitee lists.
